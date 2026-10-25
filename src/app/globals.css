@@ -2229,6 +2229,8 @@ html.is-intro .intro__skip:hover {
   isolation: isolate;
   background: #1a1f16;
   box-shadow: 0 40px 80px -42px rgba(5, 10, 28, 0.55);
+  transition: box-shadow 1.2s var(--ease-out), background-color 0.6s;
+  will-change: transform;
 }
 .portrait__img {
   position: absolute;
@@ -2236,19 +2238,27 @@ html.is-intro .intro__skip:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.2s var(--ease-out);
+  transition: transform 1.2s var(--ease-out), opacity 0.3s;
 }
-.portrait:hover .portrait__img {
+.portrait:not([data-fx]):hover .portrait__img {
   transform: scale(1.03);
 }
-/* the logo always sits on the bright painting (top-right of the photo), whatever the language */
-.portrait__logo {
+.portrait__fx {
   position: absolute;
-  top: 5%;
-  right: 5%;
-  width: 36%;
-  height: auto;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+/* while the shader owns the photo, the plain image is hidden and the card
+   has no fill or shadow until the reveal has landed */
+.portrait[data-fx] .portrait__img {
+  opacity: 0;
+}
+.portrait[data-fx]:not([data-revealed]) {
+  background: transparent;
+  box-shadow: none;
 }
 .about__role {
   margin-top: 16px;

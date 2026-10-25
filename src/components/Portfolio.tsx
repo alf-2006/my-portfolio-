@@ -17,6 +17,7 @@ import ContactForm from "./ContactForm";
 import CopyEmail from "./CopyEmail";
 import Header from "./Header";
 import Motion from "./Motion";
+import PortraitFX from "./PortraitFX";
 import RibbonStage from "./RibbonStage";
 import Services from "./Services";
 import TechMarquee from "./TechMarquee";
@@ -257,12 +258,8 @@ export default function Portfolio({ d }: { d: Dictionary }) {
         {/* ── About ── */}
         <section id="about" className="about" aria-labelledby="about-title">
           <div className="container-x about__grid">
-            <div className="about__photo" data-reveal>
-              <div className="portrait">
-                <Image className="portrait__img" src="/about/ahmed.webp" alt={d.about.photoAlt} width={573} height={716} sizes="(min-width: 960px) 34vw, 86vw" quality={90} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="portrait__logo" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
-              </div>
+            <div className="about__photo">
+              <PortraitFX src="/about/ahmed.webp" alt={d.about.photoAlt} width={573} height={716} />
             </div>
             <div className="about__body">
               <span className="label">{d.about.label}</span>
