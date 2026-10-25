@@ -101,7 +101,6 @@ export type Dictionary = {
   stack: { label: string; title: string; groups: StackGroup[]; certsTitle: string; certs: string[]; marqueeLabel: string };
   about: { label: string; title: string; role: string; paragraphs: string[]; location: string; photoAlt: string; stats: Stat[]; linksLabel: string };
   services: { label: string; title: string; intro: string; items: Service[]; prev: string; next: string; goTo: string };
-  videos: { title: string; sub: string; views: string; all: string };
   form: {
     title: string;
     name: string;
@@ -401,7 +400,6 @@ export const en: Dictionary = {
       { icon: "iot", title: "IoT & automation", text: "ESP32 and Arduino devices on MQTT, connected to apps and dashboards.", tags: ["ESP32", "MQTT", "Arduino"] },
     ],
   },
-  videos: { title: "Latest on Wasla Tech", sub: "New lessons from the channel, pulled in automatically.", views: "views", all: "All videos" },
   form: {
     title: "Send a message",
     name: "Name",
@@ -690,7 +688,6 @@ export const ar: Dictionary = {
       { icon: "iot", title: "IoT والأتمتة", text: "أجهزة ESP32 وArduino عبر MQTT، متصلة بالتطبيقات ولوحات التحكم.", tags: ["ESP32", "MQTT", "Arduino"] },
     ],
   },
-  videos: { title: "أحدث فيديوهات Wasla Tech", sub: "دروس جديدة من القناة، تظهر هنا تلقائيًا.", views: "مشاهدة", all: "كل الفيديوهات" },
   form: {
     title: "أرسل رسالة",
     name: "الاسم",

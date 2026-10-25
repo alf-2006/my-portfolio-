@@ -20,7 +20,6 @@ import Motion from "./Motion";
 import RibbonStage from "./RibbonStage";
 import Services from "./Services";
 import TechMarquee from "./TechMarquee";
-import WaslaVideos from "./WaslaVideos";
 import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon, WhatsappIcon, YoutubeIcon } from "./Icons";
 
 function Ext({ href, children, className, newTab }: { href: string; children: React.ReactNode; className?: string; newTab: string }) {
@@ -577,7 +576,6 @@ export default function Portfolio({ d }: { d: Dictionary }) {
                 ))}
               </ul>
             </div>
-            <WaslaVideos d={d} channel={LINKS.youtube} />
           </div>
           <div className="marquee" aria-hidden="true">
             <div className="marquee__track">
