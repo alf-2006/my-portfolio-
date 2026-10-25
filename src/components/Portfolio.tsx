@@ -8,7 +8,6 @@ import {
   Link2,
   Lock,
   Mail,
-  MapPin,
   Mic,
   RotateCcw,
   ShieldCheck,
@@ -261,15 +260,9 @@ export default function Portfolio({ d }: { d: Dictionary }) {
           <div className="container-x about__grid">
             <div className="about__photo" data-reveal>
               <div className="portrait">
-                <div className="portrait__bg" aria-hidden="true" />
-                <span className="portrait__sun" aria-hidden="true" />
-                <Image className="portrait__img" src="/about/ahmed.webp" alt={d.about.photoAlt} width={720} height={720} sizes="(min-width: 960px) 34vw, 86vw" />
+                <Image className="portrait__img" src="/about/ahmed.webp" alt={d.about.photoAlt} width={573} height={716} sizes="(min-width: 960px) 34vw, 86vw" quality={90} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="portrait__logo" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
-                <span className="portrait__tag">
-                  <MapPin size={15} aria-hidden="true" />
-                  {d.about.location}
-                </span>
               </div>
             </div>
             <div className="about__body">
@@ -288,9 +281,8 @@ export default function Portfolio({ d }: { d: Dictionary }) {
               <ul className="stats" data-reveal>
                 {d.about.stats.map((st) => (
                   <li key={st.label}>
-                    <b>
+                    <b data-suffix={st.suffix ?? ""}>
                       <span data-count={st.value}>{st.value}</span>
-                      {st.suffix}
                     </b>
                     <span>{st.label}</span>
                   </li>

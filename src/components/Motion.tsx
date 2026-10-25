@@ -105,16 +105,11 @@ export default function Motion() {
               }),
           });
         });
-        if (document.querySelector(".portrait__img")) {
-          gsap.fromTo(
-            ".portrait__img",
-            { yPercent: 6 },
-            { yPercent: -2, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } }
-          );
+        if (document.querySelector(".portrait__logo")) {
           gsap.fromTo(
             ".portrait__logo",
-            { yPercent: 30, rotate: -8 },
-            { yPercent: -30, rotate: 4, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } }
+            { yPercent: 14 },
+            { yPercent: -14, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } }
           );
         }
 
