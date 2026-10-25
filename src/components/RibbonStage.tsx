@@ -228,8 +228,12 @@ export default function RibbonStage({ dir }: { dir: "ltr" | "rtl" }) {
         L.intro = { x: 0, y: visH * 0.04, s: iS };
         if (w >= 900 && aspect > 1.05) {
           L.mobile = false;
-          const s = Math.min(visH * 0.37, (visW * 0.39) / ASPECT);
-          L.hero = { x: (visW / 2 - (s * ASPECT) / 2 - visW * 0.04) * sign, y: visH * 0.03, s };
+          const s = Math.min(visH * 0.36, (visW * 0.36) / ASPECT);
+          // keep the logo inside the bordered frame, not against the viewport edge
+          const frame = document.querySelector("main")?.getBoundingClientRect();
+          const inset = frame ? Math.max(0, w - frame.right) : 0;
+          const margin = (inset + Math.max(28, w * 0.03)) * L.wpp;
+          L.hero = { x: (visW / 2 - (s * ASPECT) / 2 - margin) * sign, y: visH * 0.03, s };
         } else {
           L.mobile = true;
           const s = Math.min(visH * 0.25, (visW * 0.86) / ASPECT);
