@@ -43,12 +43,23 @@ export default function Motion() {
 
       const ctx = gsap.context(() => {
         // ── Hero intro ──
-        const heroTl = gsap.timeline({ delay: 0.15, defaults: { ease: "power4.out" } });
+        const heroTl = gsap.timeline({ paused: true, defaults: { ease: "power4.out" } });
         heroTl
           .fromTo(".hero [data-hero='top']", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 })
           .fromTo(".hero .line-mask > span", { y: 0, yPercent: 110 }, { yPercent: 0, duration: 1.15, stagger: 0.12 }, "-=0.55")
           .add(() => document.querySelector(".hero .key")?.setAttribute("data-on", "true"), "-=0.5")
           .fromTo(".hero [data-hero='rest']", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, "-=0.75");
+        // the hero waits for the logo intro (first visit of the session), then plays
+        if (root.classList.contains("is-intro") && !window.__introRevealed) {
+          lenis.stop();
+          const onReveal = () => {
+            lenis.start();
+            heroTl.play();
+          };
+          window.addEventListener("alf:intro-reveal", onReveal, { once: true });
+        } else {
+          gsap.delayedCall(0.15, () => heroTl.play());
+        }
 
         // ── Generic reveals ──
         ScrollTrigger.batch("[data-reveal]", {
@@ -75,6 +86,37 @@ export default function Motion() {
           once: true,
           onEnter: () => document.querySelector(".contact .key")?.setAttribute("data-on", "true"),
         });
+
+        // ── About: stats count up once, the portrait drifts a little slower than the page ──
+        gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
+          const target = Number(el.dataset.count) || 0;
+          const o = { v: 0 };
+          el.textContent = "0";
+          ScrollTrigger.create({
+            trigger: el,
+            start: "top 90%",
+            once: true,
+            onEnter: () =>
+              gsap.to(o, {
+                v: target,
+                duration: 1.6,
+                ease: "power2.out",
+                onUpdate: () => (el.textContent = String(Math.round(o.v))),
+              }),
+          });
+        });
+        if (document.querySelector(".portrait__img")) {
+          gsap.fromTo(
+            ".portrait__img",
+            { yPercent: 6 },
+            { yPercent: -2, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } }
+          );
+          gsap.fromTo(
+            ".portrait__logo",
+            { yPercent: 30, rotate: -8 },
+            { yPercent: -30, rotate: 4, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } }
+          );
+        }
 
         const mm = gsap.matchMedia();
 

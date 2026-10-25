@@ -3,10 +3,11 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/site";
+import ThemeToggle from "./ThemeToggle";
 
-type Props = Pick<Dictionary, "nav" | "langSwitch" | "talk" | "a11y" | "locale">;
+type Props = Pick<Dictionary, "nav" | "langSwitch" | "talk" | "a11y" | "locale" | "theme">;
 
-export default function Header({ nav, langSwitch, talk, a11y, locale }: Props) {
+export default function Header({ nav, langSwitch, talk, a11y, locale, theme }: Props) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -46,7 +47,8 @@ export default function Header({ nav, langSwitch, talk, a11y, locale }: Props) {
       <header className="site-header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined}>
         <div className="container-x site-header__inner">
           <a href={home} className="brand" aria-label="Ahmed Eid — ALF">
-            <span className="brand__mark" aria-hidden="true">ALF</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand__logo" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
             <span className="brand__name">Ahmed Eid</span>
           </a>
           <nav className="nav" aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main"}>
@@ -57,6 +59,7 @@ export default function Header({ nav, langSwitch, talk, a11y, locale }: Props) {
             ))}
           </nav>
           <div className="header-actions">
+            <ThemeToggle labels={theme} />
             <a className="lang-switch" href={langSwitch.href} hrefLang={langSwitch.hrefLang} lang={langSwitch.hrefLang} aria-label={langSwitch.aria}>
               {langSwitch.label}
             </a>

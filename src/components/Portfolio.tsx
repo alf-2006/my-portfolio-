@@ -8,15 +8,20 @@ import {
   Link2,
   Lock,
   Mail,
+  MapPin,
   Mic,
   RotateCcw,
   ShieldCheck,
 } from "lucide-react";
 import { LINKS, type Dictionary, type Project } from "@/content/site";
+import ContactForm from "./ContactForm";
 import CopyEmail from "./CopyEmail";
 import Header from "./Header";
 import Motion from "./Motion";
 import RibbonStage from "./RibbonStage";
+import Services from "./Services";
+import TechMarquee from "./TechMarquee";
+import WaslaVideos from "./WaslaVideos";
 import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon, WhatsappIcon, YoutubeIcon } from "./Icons";
 
 function Ext({ href, children, className, newTab }: { href: string; children: React.ReactNode; className?: string; newTab: string }) {
@@ -163,7 +168,18 @@ export default function Portfolio({ d }: { d: Dictionary }) {
       <a className="skip-link" href="#main">
         {d.skip}
       </a>
-      <Header nav={d.nav} langSwitch={d.langSwitch} talk={d.talk} a11y={d.a11y} locale={d.locale} />
+      <div className="intro" aria-hidden="true">
+        <div className="container-x intro__bar">
+          <span className="intro__label">{d.intro.label}</span>
+          <span className="intro__pct">
+            <span data-intro-pct>00</span>%
+          </span>
+        </div>
+      </div>
+      <button type="button" className="intro__skip" data-intro-skip>
+        {d.intro.skip}
+      </button>
+      <Header nav={d.nav} langSwitch={d.langSwitch} talk={d.talk} a11y={d.a11y} locale={d.locale} theme={d.theme} />
       <RibbonStage dir={d.dir} />
       <Motion />
 
@@ -173,7 +189,7 @@ export default function Portfolio({ d }: { d: Dictionary }) {
           <div className="hero__glow" />
           <div className="hero__dots" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="ribbon-fallback" src="/brand/alf-ribbon.webp" alt="" width={1040} height={705} />
+          <img className="ribbon-fallback" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
           <div className="container-x hero__inner">
             <div className="hero__content">
               <div className="hero__top" data-hero="top">
@@ -237,6 +253,94 @@ export default function Portfolio({ d }: { d: Dictionary }) {
                 </span>
               ))}
             </p>
+          </div>
+        </section>
+
+        {/* ── About ── */}
+        <section id="about" className="about" aria-labelledby="about-title">
+          <div className="container-x about__grid">
+            <div className="about__photo" data-reveal>
+              <div className="portrait">
+                <div className="portrait__bg" aria-hidden="true" />
+                <span className="portrait__sun" aria-hidden="true" />
+                <Image className="portrait__img" src="/about/ahmed.webp" alt={d.about.photoAlt} width={720} height={720} sizes="(min-width: 960px) 34vw, 86vw" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="portrait__logo" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
+                <span className="portrait__tag">
+                  <MapPin size={15} aria-hidden="true" />
+                  {d.about.location}
+                </span>
+              </div>
+            </div>
+            <div className="about__body">
+              <span className="label">{d.about.label}</span>
+              <h2 id="about-title" className="h2" data-reveal>
+                {d.about.title}
+              </h2>
+              <p className="about__role" data-reveal>
+                {d.about.role}
+              </p>
+              {d.about.paragraphs.map((t) => (
+                <p key={t.slice(0, 24)} className="about__text" data-reveal>
+                  {t}
+                </p>
+              ))}
+              <ul className="stats" data-reveal>
+                {d.about.stats.map((st) => (
+                  <li key={st.label}>
+                    <b>
+                      <span data-count={st.value}>{st.value}</span>
+                      {st.suffix}
+                    </b>
+                    <span>{st.label}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="about__links" data-reveal>
+                <p>{d.about.linksLabel}</p>
+                <ul>
+                  <li>
+                    <a className="lbtn lbtn--cv" href={LINKS.cv} download>
+                      <Download size={16} aria-hidden="true" />
+                      CV
+                    </a>
+                  </li>
+                  {[
+                    { href: LINKS.github, label: "GitHub", Icon: GithubIcon },
+                    { href: LINKS.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+                    { href: LINKS.youtube, label: "YouTube", Icon: YoutubeIcon },
+                    { href: LINKS.whatsapp, label: "WhatsApp", Icon: WhatsappIcon },
+                    { href: LINKS.telegram, label: "Telegram", Icon: TelegramIcon },
+                    { href: LINKS.facebook, label: "Facebook", Icon: FacebookIcon },
+                  ].map(({ href, label, Icon }) => (
+                    <li key={label}>
+                      <Ext href={href} className="lbtn" newTab={nt}>
+                        <Icon size={16} />
+                        {label}
+                      </Ext>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Services ── */}
+        <section id="services" className="services" aria-labelledby="services-title">
+          <div className="container-x">
+            <div className="services__head">
+              <div>
+                <span className="label">{d.services.label}</span>
+                <h2 id="services-title" className="h2" data-reveal>
+                  {d.services.title}
+                </h2>
+              </div>
+              <p className="lead services__intro" data-reveal>
+                {d.services.intro}
+              </p>
+            </div>
+            <Services s={d.services} dir={d.dir} />
           </div>
         </section>
 
@@ -481,6 +585,7 @@ export default function Portfolio({ d }: { d: Dictionary }) {
                 ))}
               </ul>
             </div>
+            <WaslaVideos d={d} channel={LINKS.youtube} />
           </div>
           <div className="marquee" aria-hidden="true">
             <div className="marquee__track">
@@ -529,6 +634,9 @@ export default function Portfolio({ d }: { d: Dictionary }) {
             <h2 id="stack-title" className="h2" data-reveal>
               {d.stack.title}
             </h2>
+          </div>
+          <TechMarquee label={d.stack.marqueeLabel} />
+          <div className="container-x">
             <div className="stack__groups">
               {d.stack.groups.map((g, i) => (
                 <div key={g.title} className={`sg${i === 0 ? " sg--ai" : ""}`} data-reveal>
@@ -562,7 +670,7 @@ export default function Portfolio({ d }: { d: Dictionary }) {
 
         {/* ── Contact ── */}
         <section id="contact" className="contact" aria-labelledby="contact-title">
-          <div className="container-x">
+          <div className="container-x contact__grid">
             <div className="contact__content">
               <span className="label">{d.contact.label}</span>
               <h2 id="contact-title" className="contact__title">
@@ -610,6 +718,7 @@ export default function Portfolio({ d }: { d: Dictionary }) {
                 </ul>
               </div>
             </div>
+            <ContactForm f={d.form} email={LINKS.email} whatsapp={LINKS.whatsapp} />
           </div>
         </section>
       </main>

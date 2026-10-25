@@ -53,6 +53,10 @@ export type TimelineItem = { when: string; title: string; org: string; note: str
 
 export type StackGroup = { title: string; items: string[] };
 
+export type Stat = { value: number; suffix?: string; label: string };
+
+export type Service = { icon: "agent" | "rag" | "web" | "desktop" | "shield" | "iot"; title: string; text: string; tags: string[] };
+
 export type Dictionary = {
   locale: Locale;
   dir: "ltr" | "rtl";
@@ -94,7 +98,28 @@ export type Dictionary = {
   };
   wasla: { label: string; title: string; role: string; text: string; points: string[]; cta: string; marquee: string[] };
   journey: { label: string; title: string; items: TimelineItem[]; nowLabel: string };
-  stack: { label: string; title: string; groups: StackGroup[]; certsTitle: string; certs: string[] };
+  stack: { label: string; title: string; groups: StackGroup[]; certsTitle: string; certs: string[]; marqueeLabel: string };
+  about: { label: string; title: string; role: string; paragraphs: string[]; location: string; photoAlt: string; stats: Stat[]; linksLabel: string };
+  services: { label: string; title: string; intro: string; items: Service[]; prev: string; next: string; goTo: string };
+  videos: { title: string; sub: string; views: string; all: string };
+  form: {
+    title: string;
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    namePh: string;
+    emailPh: string;
+    subjectPh: string;
+    messagePh: string;
+    viaEmail: string;
+    viaWhatsapp: string;
+    note: string;
+    required: string;
+    greeting: string;
+  };
+  theme: { dark: string; light: string };
+  intro: { skip: string; label: string };
   contact: {
     label: string;
     titleA: string;
@@ -130,9 +155,9 @@ export const en: Dictionary = {
   },
   skip: "Skip to content",
   nav: [
+    { href: "#about", label: "About" },
     { href: "#work", label: "Work" },
     { href: "#process", label: "Process" },
-    { href: "#rafiq", label: "RAFIQ" },
     { href: "#wasla", label: "Wasla Tech" },
     { href: "#journey", label: "Journey" },
     { href: "#contact", label: "Contact" },
@@ -340,7 +365,61 @@ export const en: Dictionary = {
       "Satr Academy — Dart Programming",
       "FlutterFlow Development",
     ],
+    marqueeLabel: "Daily stack",
   },
+  about: {
+    label: "About",
+    title: "Hey, I’m Ahmed.",
+    role: "AI-focused IT student · Team Leader at Wasla Tech",
+    paragraphs: [
+      "I’m a second-year IT student at Borg El Arab Technological University in Alexandria. My main focus is AI — local LLMs, retrieval (RAG) and voice — and the full-stack engineering that turns them into products people can use.",
+      "I build fast with AI tools, but I don’t ship what I can’t explain. I design the architecture first, review every line the tools write and back the result with real tests. I lead the Wasla Tech team, and I co-founded RAFIQ as its AI Team Leader.",
+    ],
+    location: "Alexandria, Egypt",
+    photoAlt: "Ahmed Eid in a black suit",
+    stats: [
+      { value: 25, suffix: "+", label: "public GitHub repositories" },
+      { value: 8, label: "certifications" },
+      { value: 3, label: "teams led" },
+      { value: 4, label: "featured builds" },
+    ],
+    linksLabel: "Find me on",
+  },
+  services: {
+    label: "Services",
+    title: "What I can build for you",
+    intro: "Freelance projects, internships or a seat on your team — this is where I add the most.",
+    prev: "Previous",
+    next: "Next",
+    goTo: "Go to card",
+    items: [
+      { icon: "agent", title: "AI assistants & voice", text: "Chat and voice assistants on local LLMs with a cloud fallback — in Arabic and English.", tags: ["Ollama", "Whisper", "TTS"] },
+      { icon: "rag", title: "RAG over your documents", text: "Answers grounded in your own files, with retrieval quality you can measure.", tags: ["ChromaDB", "FastAPI", "Python"] },
+      { icon: "web", title: "Full-stack web apps", text: "React and Next.js front-ends on Node backends, with auth, realtime and a real database.", tags: ["Next.js", "Node.js", "Supabase"] },
+      { icon: "desktop", title: "Offline-first desktop apps", text: "Electron apps on local SQLite that keep working without internet and sync later.", tags: ["Electron", "SQLite", "Prisma"] },
+      { icon: "shield", title: "Security & testing", text: "Encryption by design, then end-to-end tests and CI so it keeps working.", tags: ["AES-256-GCM", "Playwright", "GitHub Actions"] },
+      { icon: "iot", title: "IoT & automation", text: "ESP32 and Arduino devices on MQTT, connected to apps and dashboards.", tags: ["ESP32", "MQTT", "Arduino"] },
+    ],
+  },
+  videos: { title: "Latest on Wasla Tech", sub: "New lessons from the channel, pulled in automatically.", views: "views", all: "All videos" },
+  form: {
+    title: "Send a message",
+    name: "Name",
+    email: "Your email",
+    subject: "Subject",
+    message: "Message",
+    namePh: "Your name",
+    emailPh: "you@example.com",
+    subjectPh: "Internship, freelance project…",
+    messagePh: "Tell me about the idea, the timeline and the budget.",
+    viaEmail: "Send by email",
+    viaWhatsapp: "Send on WhatsApp",
+    note: "Opens your email app or WhatsApp with the message ready. Nothing is stored on this site.",
+    required: "Please add your name and a message.",
+    greeting: "Hi Ahmed,",
+  },
+  theme: { dark: "Switch to dark mode", light: "Switch to light mode" },
+  intro: { skip: "Skip intro", label: "Ahmed Eid — ALF" },
   contact: {
     label: "Contact",
     titleA: "Have an idea that needs AI and ",
@@ -369,9 +448,9 @@ export const ar: Dictionary = {
   },
   skip: "تخطَّ إلى المحتوى",
   nav: [
+    { href: "#about", label: "نبذة" },
     { href: "#work", label: "المشاريع" },
     { href: "#process", label: "طريقتي" },
-    { href: "#rafiq", label: "RAFIQ" },
     { href: "#wasla", label: "Wasla Tech" },
     { href: "#journey", label: "المسيرة" },
     { href: "#contact", label: "تواصل" },
@@ -575,7 +654,61 @@ export const ar: Dictionary = {
       "Satr Academy — Dart Programming",
       "FlutterFlow Development",
     ],
+    marqueeLabel: "أدواتي اليومية",
   },
+  about: {
+    label: "نبذة",
+    title: "أهلًا، أنا أحمد.",
+    role: "طالب IT متخصص في الذكاء الاصطناعي · Team Leader في Wasla Tech",
+    paragraphs: [
+      "طالب في السنة الثانية بقسم تكنولوجيا المعلومات في جامعة برج العرب التكنولوجية بالإسكندرية. تركيزي الأساسي هو الذكاء الاصطناعي — Local LLMs والـRAG والصوت — والهندسة الكاملة (Full-stack) التي تحوّلها إلى منتجات يستخدمها الناس.",
+      "أبني بسرعة بأدوات الـAI، لكنني لا أنشر ما لا أستطيع شرحه. أصمم المعمارية أولًا، وأراجع كل سطر تكتبه الأدوات، وأدعم النتيجة باختبارات حقيقية. أقود فريق Wasla Tech، وشاركت في تأسيس RAFIQ كقائد لفريق الـAI.",
+    ],
+    location: "الإسكندرية، مصر",
+    photoAlt: "أحمد عيد ببدلة سوداء",
+    stats: [
+      { value: 25, suffix: "+", label: "مستودع عام على GitHub" },
+      { value: 8, label: "شهادات" },
+      { value: 3, label: "فرق قُدتها" },
+      { value: 4, label: "مشاريع مميزة" },
+    ],
+    linksLabel: "تجدني على",
+  },
+  services: {
+    label: "الخدمات",
+    title: "ما الذي أستطيع بناءه لك",
+    intro: "مشاريع عمل حر، أو تدريب، أو مكان في فريقك — هنا أضيف أكبر قيمة.",
+    prev: "السابق",
+    next: "التالي",
+    goTo: "انتقل إلى البطاقة",
+    items: [
+      { icon: "agent", title: "مساعدات ذكية وصوتية", text: "مساعدات محادثة وصوت تعمل على Local LLMs مع بديل سحابي — بالعربية والإنجليزية.", tags: ["Ollama", "Whisper", "TTS"] },
+      { icon: "rag", title: "RAG على مستنداتك", text: "إجابات مبنية على ملفاتك أنت، مع جودة استرجاع يمكن قياسها.", tags: ["ChromaDB", "FastAPI", "Python"] },
+      { icon: "web", title: "تطبيقات ويب Full-stack", text: "واجهات React وNext.js فوق Backend بـNode، مع تسجيل دخول وتحديث لحظي وقاعدة بيانات حقيقية.", tags: ["Next.js", "Node.js", "Supabase"] },
+      { icon: "desktop", title: "تطبيقات Desktop تعمل Offline", text: "تطبيقات Electron على SQLite محلية تعمل بدون إنترنت وتزامن لاحقًا.", tags: ["Electron", "SQLite", "Prisma"] },
+      { icon: "shield", title: "الأمان والاختبارات", text: "تشفير من التصميم، ثم اختبارات End-to-end وCI ليبقى كل شيء يعمل.", tags: ["AES-256-GCM", "Playwright", "GitHub Actions"] },
+      { icon: "iot", title: "IoT والأتمتة", text: "أجهزة ESP32 وArduino عبر MQTT، متصلة بالتطبيقات ولوحات التحكم.", tags: ["ESP32", "MQTT", "Arduino"] },
+    ],
+  },
+  videos: { title: "أحدث فيديوهات Wasla Tech", sub: "دروس جديدة من القناة، تظهر هنا تلقائيًا.", views: "مشاهدة", all: "كل الفيديوهات" },
+  form: {
+    title: "أرسل رسالة",
+    name: "الاسم",
+    email: "بريدك الإلكتروني",
+    subject: "الموضوع",
+    message: "الرسالة",
+    namePh: "اسمك",
+    emailPh: "you@example.com",
+    subjectPh: "تدريب، مشروع عمل حر…",
+    messagePh: "احكِ لي عن الفكرة والموعد والميزانية.",
+    viaEmail: "أرسل بالبريد",
+    viaWhatsapp: "أرسل على واتساب",
+    note: "يفتح تطبيق البريد أو واتساب والرسالة جاهزة. لا يُخزَّن أي شيء على هذا الموقع.",
+    required: "من فضلك اكتب اسمك ورسالتك.",
+    greeting: "مرحبًا أحمد،",
+  },
+  theme: { dark: "التبديل إلى الوضع الليلي", light: "التبديل إلى الوضع النهاري" },
+  intro: { skip: "تخطَّ المقدمة", label: "أحمد عيد — ALF" },
   contact: {
     label: "تواصل",
     titleA: "لديك فكرة تحتاج إلى ذكاء اصطناعي و",

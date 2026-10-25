@@ -41,4 +41,4 @@ export function personJsonLd(d: Dictionary) {
   };
 }
 
-export const MOTION_BOOT = `(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.classList.add('js-motion');setTimeout(function(){if(!window.__motionReady){d.classList.remove('js-motion')}},4500)}}catch(e){}})();`;
+export const MOTION_BOOT = `(function(){try{var d=document.documentElement;try{if(localStorage.getItem('alf-theme')==='dark'){d.dataset.theme='dark';var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content','#070b17')}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js-motion');var seen=false;try{seen=sessionStorage.getItem('alf-intro-seen')==='1'}catch(e){}if(!seen){d.classList.add('is-intro');setTimeout(function(){if(!window.__introRevealed){window.__introRevealed=true;d.classList.add('intro-done');d.classList.remove('is-intro');window.dispatchEvent(new Event('alf:intro-reveal'))}},9000)}setTimeout(function(){if(!window.__motionReady){d.classList.remove('js-motion');d.classList.remove('is-intro')}},4500)}}catch(e){}})();`;
