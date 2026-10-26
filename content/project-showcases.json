@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "projects": {
+    "elahmed-retail-suite-main": {
+      "title": {
+        "en": "Elahmed Retail Suite",
+        "ar": "Elahmed Retail Suite"
+      },
+      "media": [
+        {
+          "type": "image",
+          "src": "https://raw.githubusercontent.com/alf-2006/my-portfolio-/main/public/projects/elahmed-desktop.webp",
+          "alt": {
+            "en": "Elahmed Retail Suite sign-in screen on desktop, with its Arabic interface",
+            "ar": "شاشة تسجيل الدخول في Elahmed Retail Suite على الكمبيوتر بواجهتها العربية"
+          },
+          "caption": {
+            "en": "Desktop interface",
+            "ar": "واجهة الكمبيوتر"
+          }
+        },
+        {
+          "type": "image",
+          "src": "https://raw.githubusercontent.com/alf-2006/my-portfolio-/main/public/projects/elahmed-mobile.webp",
+          "alt": {
+            "en": "Elahmed Retail Suite sign-in screen on mobile",
+            "ar": "شاشة تسجيل الدخول في Elahmed Retail Suite على الموبايل"
+          },
+          "caption": {
+            "en": "Mobile interface",
+            "ar": "واجهة الموبايل"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1081,6 +1081,63 @@ html.no-webgl .ribbon-fallback {
   color: var(--muted);
   text-align: center;
 }
+.repo-card--interactive {
+  position: relative;
+}
+.repo-card__name button {
+  padding: 0;
+  min-height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+.repo-card__name button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.repo-card--interactive:hover .repo-card__name button {
+  color: var(--blue-700);
+}
+.repo-card__links--showcase {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.repo-card__explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--blue-700);
+  font-size: 0.87rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.repo-card__explore svg {
+  transition: transform 180ms var(--ease-out);
+}
+.repo-card__explore:hover svg {
+  transform: translate(2px, -2px);
+}
+.repo-card__links--showcase .repo-card__source {
+  min-height: 44px;
+  padding-inline: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.repo-card__source:hover {
+  color: var(--blue-700);
+}
 @media (min-width: 900px) {
   .work__head {
     grid-template-columns: 1.2fr 1fr;

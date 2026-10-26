@@ -4,10 +4,8 @@ import {
   ArrowUpRight,
   BadgeCheck,
   Download,
-  GitFork,
   Mail,
   RotateCcw,
-  Star,
 } from "lucide-react";
 import { LINKS, type Dictionary } from "@/content/site";
 import type { GitHubRepository } from "@/content/github";
@@ -18,6 +16,7 @@ import Motion from "./Motion";
 import PortraitFX from "./PortraitFX";
 import RibbonStage from "./RibbonStage";
 import Services from "./Services";
+import Projects from "./Projects";
 import TechMarquee from "./TechMarquee";
 import { FacebookIcon, GithubIcon, LinkedinIcon, TelegramIcon, WhatsappIcon, YoutubeIcon } from "./Icons";
 
@@ -27,72 +26,6 @@ function Ext({ href, children, className, newTab }: { href: string; children: Re
       {children}
       <span className="sr-only"> {newTab}</span>
     </a>
-  );
-}
-
-function RepositoryCard({
-  repository,
-  locale,
-  labels,
-  opensNew,
-}: {
-  repository: GitHubRepository;
-  locale: "en" | "ar";
-  labels: Dictionary["work"];
-  opensNew: string;
-}) {
-  const updatedAt = new Date(repository.updatedAt);
-  const updated = Number.isNaN(updatedAt.getTime())
-    ? labels.unknownDate
-    : new Intl.DateTimeFormat(locale === "ar" ? "ar" : "en", { month: "short", year: "numeric" }).format(updatedAt);
-
-  return (
-    <article className="repo-card">
-      <div className="repo-card__head">
-        <h3 className="repo-card__name">
-          <Ext href={repository.url} newTab={opensNew}>
-            {repository.name}
-          </Ext>
-        </h3>
-        {repository.archived && <span className="repo-card__archived">{labels.archived}</span>}
-      </div>
-      <p className={`repo-card__description${repository.description ? "" : " repo-card__description--empty"}`}>
-        {repository.description || labels.noDescription}
-      </p>
-      {repository.topics.length > 0 && (
-        <ul className="repo-card__topics" aria-label={labels.topics}>
-          {repository.topics.slice(0, 4).map((topic) => (
-            <li key={topic}>{topic}</li>
-          ))}
-          {repository.topics.length > 4 && <li className="repo-card__topic-more">+{repository.topics.length - 4}</li>}
-        </ul>
-      )}
-      <div className="repo-card__meta">
-        <span className="repo-card__language">{repository.language || labels.noLanguage}</span>
-        <span aria-label={`${labels.stars}: ${repository.stars}`} title={`${labels.stars}: ${repository.stars}`}>
-          <Star size={14} aria-hidden="true" /> {repository.stars}
-        </span>
-        <span aria-label={`${labels.forks}: ${repository.forks}`} title={`${labels.forks}: ${repository.forks}`}>
-          <GitFork size={14} aria-hidden="true" /> {repository.forks}
-        </span>
-        <time dateTime={repository.updatedAt} title={`${labels.updated}: ${updated}`}>
-          {updated}
-        </time>
-      </div>
-      <div className="repo-card__links">
-        <Ext href={repository.url} newTab={opensNew}>
-          <GithubIcon size={15} />
-          {labels.source}
-          <ArrowUpRight size={14} aria-hidden="true" />
-        </Ext>
-        {repository.homepage && (
-          <Ext href={repository.homepage} newTab={opensNew}>
-            {labels.website}
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </Ext>
-        )}
-      </div>
-    </article>
   );
 }
 
@@ -342,23 +275,7 @@ export default function Portfolio({ d, repositories }: { d: Dictionary; reposito
             {repositories.length === 0 ? (
               <p className="repo-empty" role="status">{d.work.unavailable}</p>
             ) : (
-              <>
-                <div className="repo-grid">
-                  {repositories.slice(0, 6).map((repository) => (
-                    <RepositoryCard key={repository.id} repository={repository} locale={d.locale} labels={d.work} opensNew={nt} />
-                  ))}
-                </div>
-                {repositories.length > 6 && (
-                  <details className="repo-more">
-                    <summary>{d.work.showAll.replace("{count}", String(repositories.length))}</summary>
-                    <div className="repo-grid">
-                      {repositories.slice(6).map((repository) => (
-                        <RepositoryCard key={repository.id} repository={repository} locale={d.locale} labels={d.work} opensNew={nt} />
-                      ))}
-                    </div>
-                  </details>
-                )}
-              </>
+              <Projects repositories={repositories} locale={d.locale} labels={d.work} opensNew={nt} />
             )}
           </div>
         </section>

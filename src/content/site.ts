@@ -76,6 +76,28 @@ export type Dictionary = {
     archived: string;
     unknownDate: string;
     unavailable: string;
+    viewProject: string;
+    projectPreview: string;
+    closeProject: string;
+    loadingProject: string;
+    projectError: string;
+    retry: string;
+    overview: string;
+    highlights: string;
+    readme: string;
+    readmeLink: string;
+    noMedia: string;
+    noMediaNote: string;
+    previousMedia: string;
+    nextMedia: string;
+    gallery: string;
+    image: string;
+    video: string;
+    playVideo: string;
+    openMedia: string;
+    mediaError: string;
+    mediaPosition: string;
+    dataSource: string;
   };
   wasla: { label: string; title: string; role: string; text: string; points: string[]; cta: string; marquee: string[] };
   journey: { label: string; title: string; items: TimelineItem[]; nowLabel: string };
@@ -212,6 +234,28 @@ export const en: Dictionary = {
     archived: "Archived",
     unknownDate: "Date unavailable",
     unavailable: "GitHub project data is temporarily unavailable.",
+    viewProject: "Explore project",
+    projectPreview: "Project showcase",
+    closeProject: "Close project",
+    loadingProject: "Loading project details from GitHub…",
+    projectError: "We couldn’t load the project details. You can retry or view the repository on GitHub.",
+    retry: "Try again",
+    overview: "Overview",
+    highlights: "What it does",
+    readme: "Project documentation",
+    readmeLink: "Read the full README",
+    noMedia: "Details, straight from the source.",
+    noMediaNote: "Screenshots or a demo haven’t been added for this project yet.",
+    previousMedia: "Previous media",
+    nextMedia: "Next media",
+    gallery: "Project gallery",
+    image: "Screenshot",
+    video: "Video demo",
+    playVideo: "Play demo",
+    openMedia: "Open original",
+    mediaError: "This media couldn’t be displayed. You can open the original instead.",
+    mediaPosition: "Media {current} of {total}",
+    dataSource: "Project content from GitHub",
   },
   wasla: {
     label: "Leadership",
@@ -423,6 +467,28 @@ export const ar: Dictionary = {
     archived: "مؤرشف",
     unknownDate: "التاريخ غير متاح",
     unavailable: "بيانات المشاريع من GitHub غير متاحة مؤقتًا.",
+    viewProject: "استعرض المشروع",
+    projectPreview: "عرض المشروع",
+    closeProject: "إغلاق المشروع",
+    loadingProject: "جارٍ تحميل تفاصيل المشروع من GitHub…",
+    projectError: "تعذّر تحميل تفاصيل المشروع. جرّب مرة أخرى أو افتح المستودع على GitHub.",
+    retry: "حاول مرة أخرى",
+    overview: "عن المشروع",
+    highlights: "ماذا يقدّم؟",
+    readme: "توثيق المشروع",
+    readmeLink: "اقرأ README كاملًا",
+    noMedia: "تفاصيل المشروع من مصدرها.",
+    noMediaNote: "لم تُضف صور أو فيديو توضيحي لهذا المشروع حتى الآن.",
+    previousMedia: "الوسائط السابقة",
+    nextMedia: "الوسائط التالية",
+    gallery: "معرض المشروع",
+    image: "صورة للمشروع",
+    video: "فيديو توضيحي",
+    playVideo: "شغّل الفيديو",
+    openMedia: "افتح الأصل",
+    mediaError: "تعذّر عرض هذه الوسائط. يمكنك فتح النسخة الأصلية.",
+    mediaPosition: "الوسائط {current} من {total}",
+    dataSource: "محتوى المشروع من GitHub",
   },
   wasla: {
     label: "القيادة",
