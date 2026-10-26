@@ -18,28 +18,7 @@ export const LINKS = {
     batu: "https://github.com/alf-2006/batu-connect",
     elahmed: "https://github.com/alf-2006/elahmed-retail-suite-main",
   },
-  live: {
-    kataby: "https://kataby.vercel.app",
-    elahmed: "https://elahmed.vercel.app",
-  },
 } as const;
-
-export type ProjectLink = { label: string; href: string; kind: "live" | "code" };
-
-export type Project = {
-  id: string;
-  index: string;
-  name: string;
-  alias?: string;
-  tagline: string;
-  summary: string;
-  role: string;
-  points: string[];
-  stack: string[];
-  links: ProjectLink[];
-  image?: { src: string; alt: string; width: number; height: number };
-  visual: "rafiq" | "batu" | "kataby" | "elahmed";
-};
 
 export type Step = {
   index: string;
@@ -53,7 +32,7 @@ export type TimelineItem = { when: string; title: string; org: string; note: str
 
 export type StackGroup = { title: string; items: string[] };
 
-export type Stat = { value: number; suffix?: string; label: string };
+export type Stat = { value: number; suffix?: string; label: string; source?: "github-repositories" | "github-languages" };
 
 export type Service = { icon: "agent" | "rag" | "web" | "desktop" | "shield" | "iot"; title: string; text: string; tags: string[] };
 
@@ -80,21 +59,23 @@ export type Dictionary = {
   };
   manifesto: { label: string; text: string };
   process: { label: string; title: string; intro: string; steps: Step[]; loop: string };
-  work: { label: string; title: string; intro: string; projects: Project[]; moreTitle: string; more: { name: string; note: string }[]; roleLabel: string; stackLabel: string };
-  rafiq: {
+  work: {
     label: string;
     title: string;
-    sub: string;
-    role: string;
-    facts: { k: string; v: string }[];
-    rule: string;
-    never: string;
-    layers: { title: string; items: string[] }[];
-    side: { title: string; items: string[] }[];
-    pipelineLabel: string;
-    pipeline: string[];
-    verify: string;
-    cta: string;
+    intro: string;
+    repositoryCount: string;
+    showAll: string;
+    noDescription: string;
+    noLanguage: string;
+    topics: string;
+    stars: string;
+    forks: string;
+    updated: string;
+    website: string;
+    source: string;
+    archived: string;
+    unknownDate: string;
+    unavailable: string;
   };
   wasla: { label: string; title: string; role: string; text: string; points: string[]; cta: string; marquee: string[] };
   journey: { label: string; title: string; items: TimelineItem[]; nowLabel: string };
@@ -134,13 +115,6 @@ export type Dictionary = {
   };
   footer: { line: string; built: string; top: string };
   a11y: { opensNew: string; menu: string; close: string };
-};
-
-const stackCommon = {
-  rafiq: ["Python", "FastAPI", "Ollama", "Whisper", "TTS", "ChromaDB", "Fastify", "SQLite", "SSE", "MQTT", "Electron", "React", "Supabase"],
-  batu: ["React 19", "Vite", "Tailwind", "Express", "Socket.IO", "Prisma", "Baileys", "AES-256-GCM", "Jest"],
-  kataby: ["React 19", "Vite", "TypeScript", "Supabase", "Tailwind", "TanStack"],
-  elahmed: ["React", "Vite", "Electron", "SQLite", "Express", "Prisma", "Playwright", "Vitest", "GitHub Actions"],
 };
 
 export const en: Dictionary = {
@@ -223,102 +197,21 @@ export const en: Dictionary = {
   },
   work: {
     label: "Selected work",
-    title: "Featured projects",
-    intro: "Four builds I can walk you through line by line.",
-    roleLabel: "Role",
-    stackLabel: "Stack",
-    projects: [
-      {
-        id: "rafiq",
-        index: "01",
-        name: "RAFIQ",
-        tagline: "Bilingual AI assistant for home patients & elderly care",
-        summary: "An offline-first Arabic/English voice assistant: speech-to-text, a local LLM with cloud fallback, RAG memory and text-to-speech.",
-        role: "Team project · Former Co-founder & AI Team Leader (Mar–Jun 2026)",
-        points: [
-          "Three layers — AI service → backend → desktop GUI",
-          "Local SQLite with async Supabase sync",
-          "Benchmarked RAG, caching and voice-activity detection",
-        ],
-        stack: stackCommon.rafiq,
-        links: [{ label: "GitHub", href: LINKS.repos.rafiq, kind: "code" }],
-        visual: "rafiq",
-      },
-      {
-        id: "batu",
-        index: "02",
-        name: "BATU Connect",
-        tagline: "Students reach faculty — phone numbers stay private",
-        summary: "Students message lecturers through a WhatsApp bridge without ever seeing their phone numbers. Replies arrive live over WebSockets.",
-        role: "Solo project",
-        points: ["AES-256-GCM encryption for lecturer numbers", "Live replies over Socket.IO", "Unit and integration tests with Jest"],
-        stack: stackCommon.batu,
-        links: [{ label: "GitHub", href: LINKS.repos.batu, kind: "code" }],
-        visual: "batu",
-      },
-      {
-        id: "kataby",
-        index: "03",
-        name: "Royal Letters",
-        alias: "Kataby",
-        tagline: "Private letters, shared through a unique link",
-        summary: "Write a private letter and share it through a one-of-a-kind link, with server-side encryption and an audit log.",
-        role: "Solo project",
-        points: ["Server-side encryption", "Audit log of letter activity", "Unique share link per letter"],
-        stack: stackCommon.kataby,
-        links: [{ label: "Live site", href: LINKS.live.kataby, kind: "live" }],
-        visual: "kataby",
-      },
-      {
-        id: "elahmed",
-        index: "04",
-        name: "Elahmed Retail Suite",
-        tagline: "Retail management for small shops — desktop & web",
-        summary: "A desktop and web system for small shops covering inventory, maintenance and delivery, shipped with end-to-end tests and a CI/CD pipeline.",
-        role: "Solo project",
-        points: ["Electron desktop app + web version", "Playwright end-to-end tests", "CI/CD with GitHub Actions"],
-        stack: stackCommon.elahmed,
-        links: [
-          { label: "Live site", href: LINKS.live.elahmed, kind: "live" },
-          { label: "GitHub", href: LINKS.repos.elahmed, kind: "code" },
-        ],
-        visual: "elahmed",
-      },
-    ],
-    moreTitle: "More builds",
-    more: [
-      { name: "Pulse of Egypt", note: "Blood-donation system linking donors with hospitals · team lead" },
-      { name: "FlutterFlow apps", note: "Mobile apps built with FlutterFlow & Cursor AI" },
-      { name: "IT Sum", note: "Peer-sharing platform for IT students" },
-      { name: "QR Studio", note: "Dynamic QR code designer" },
-    ],
-  },
-  rafiq: {
-    label: "Case study",
-    title: "RAFIQ keeps caring when the internet doesn’t.",
-    sub: "A bilingual assistant for home patients and elderly care, built offline-first.",
-    role: "Former Co-founder & AI Team Leader · BATU team project · Mar–Jun 2026",
-    facts: [
-      { k: "Languages", v: "Arabic + English" },
-      { k: "Brain", v: "Local LLM via Ollama, cloud fallback" },
-      { k: "Memory", v: "RAG over ChromaDB" },
-      { k: "Data", v: "SQLite → async Supabase sync" },
-    ],
-    rule: "Design rule",
-    never: "The GUI never talks to the AI directly.",
-    layers: [
-      { title: "Desktop GUI", items: ["Electron", "React"] },
-      { title: "Backend", items: ["Fastify", "SSE", "SQLite"] },
-      { title: "AI service", items: ["FastAPI", "Ollama", "ChromaDB"] },
-    ],
-    side: [
-      { title: "Devices", items: ["MQTT"] },
-      { title: "Cloud sync", items: ["Supabase"] },
-    ],
-    pipelineLabel: "Voice pipeline",
-    pipeline: ["Speech in", "Whisper STT", "Local LLM + RAG", "Text-to-speech", "Voice out"],
-    verify: "Benchmarked: RAG retrieval, response caching and voice-activity detection.",
-    cta: "Read the code on GitHub",
+    title: "Projects from GitHub",
+    intro: "A live catalogue of my public repositories. Names, descriptions and project details come from GitHub.",
+    repositoryCount: "{count} original public repositories",
+    showAll: "Show all {count} repositories",
+    noDescription: "No description on GitHub yet.",
+    noLanguage: "Language not specified",
+    topics: "Repository topics",
+    stars: "Stars",
+    forks: "Forks",
+    updated: "Updated",
+    website: "Live site",
+    source: "View on GitHub",
+    archived: "Archived",
+    unknownDate: "Date unavailable",
+    unavailable: "GitHub project data is temporarily unavailable.",
   },
   wasla: {
     label: "Leadership",
@@ -377,10 +270,10 @@ export const en: Dictionary = {
     location: "Alexandria, Egypt",
     photoAlt: "Ahmed Eid in a black suit",
     stats: [
-      { value: 25, suffix: "+", label: "public GitHub repositories" },
+      { value: 0, label: "original public GitHub repositories", source: "github-repositories" },
       { value: 8, label: "certifications" },
       { value: 3, label: "teams led" },
-      { value: 4, label: "featured builds" },
+      { value: 0, label: "languages across public repositories", source: "github-languages" },
     ],
     linksLabel: "Find me on",
   },
@@ -515,98 +408,21 @@ export const ar: Dictionary = {
   },
   work: {
     label: "أعمال مختارة",
-    title: "أبرز المشاريع",
-    intro: "أربعة مشاريع أستطيع أن أشرح لك كل سطر فيها.",
-    roleLabel: "الدور",
-    stackLabel: "التقنيات",
-    projects: [
-      {
-        id: "rafiq",
-        index: "01",
-        name: "RAFIQ",
-        tagline: "مساعد ذكي ثنائي اللغة لمرضى المنازل ورعاية كبار السن",
-        summary: "مساعد صوتي عربي/إنجليزي يعمل Offline-first: تحويل الكلام لنص، Local LLM مع بديل سحابي، ذاكرة RAG، وتحويل النص لكلام.",
-        role: "مشروع فريق · شريك مؤسس وقائد فريق الـAI سابقًا (مارس–يونيو 2026)",
-        points: ["ثلاث طبقات — AI service ← Backend ← واجهة Desktop", "تخزين محلي SQLite مع مزامنة Supabase غير متزامنة", "قياس أداء RAG والـCaching واكتشاف الصوت (VAD)"],
-        stack: stackCommon.rafiq,
-        links: [{ label: "GitHub", href: LINKS.repos.rafiq, kind: "code" }],
-        visual: "rafiq",
-      },
-      {
-        id: "batu",
-        index: "02",
-        name: "BATU Connect",
-        tagline: "الطالب يصل إلى المحاضر — ورقمه يبقى سرّيًا",
-        summary: "الطلاب يراسلون المحاضرين عبر جسر WhatsApp دون أن يروا أرقامهم أبدًا، وتصل الردود لحظيًا عبر WebSockets.",
-        role: "مشروع فردي",
-        points: ["تشفير أرقام المحاضرين بـAES-256-GCM", "ردود لحظية عبر Socket.IO", "اختبارات Unit وIntegration بـJest"],
-        stack: stackCommon.batu,
-        links: [{ label: "GitHub", href: LINKS.repos.batu, kind: "code" }],
-        visual: "batu",
-      },
-      {
-        id: "kataby",
-        index: "03",
-        name: "Royal Letters",
-        alias: "كاتبي",
-        tagline: "رسائل خاصة تتشارك عبر رابط فريد",
-        summary: "اكتب رسالة خاصة وشاركها عبر رابط فريد، مع تشفير على الخادم وسجل تدقيق (Audit log).",
-        role: "مشروع فردي",
-        points: ["تشفير على الخادم (Server-side)", "سجل تدقيق لنشاط الرسائل", "رابط مشاركة فريد لكل رسالة"],
-        stack: stackCommon.kataby,
-        links: [{ label: "الموقع", href: LINKS.live.kataby, kind: "live" }],
-        visual: "kataby",
-      },
-      {
-        id: "elahmed",
-        index: "04",
-        name: "Elahmed Retail Suite",
-        tagline: "نظام إدارة للمحلات الصغيرة — Desktop وويب",
-        summary: "نظام Desktop وويب للمحلات الصغيرة يغطي المخزون والصيانة والتوصيل، ومعه اختبارات End-to-end وCI/CD.",
-        role: "مشروع فردي",
-        points: ["تطبيق Desktop بـElectron + نسخة ويب", "اختبارات End-to-end بـPlaywright", "CI/CD عبر GitHub Actions"],
-        stack: stackCommon.elahmed,
-        links: [
-          { label: "الموقع", href: LINKS.live.elahmed, kind: "live" },
-          { label: "GitHub", href: LINKS.repos.elahmed, kind: "code" },
-        ],
-        visual: "elahmed",
-      },
-    ],
-    moreTitle: "أعمال أخرى",
-    more: [
-      { name: "Pulse of Egypt", note: "نظام يربط المتبرعين بالدم بالمستشفيات · قائد الفريق" },
-      { name: "FlutterFlow apps", note: "تطبيقات موبايل بـFlutterFlow وCursor AI" },
-      { name: "IT Sum", note: "منصة مشاركة بين طلاب الـIT" },
-      { name: "QR Studio", note: "مصمم أكواد QR ديناميكية" },
-    ],
-  },
-  rafiq: {
-    label: "دراسة حالة",
-    title: "RAFIQ يواصل الرعاية حتى عندما ينقطع الإنترنت.",
-    sub: "مساعد ثنائي اللغة لمرضى المنازل ورعاية كبار السن، مبني Offline-first.",
-    role: "شريك مؤسس وقائد فريق الـAI سابقًا · مشروع فريق في BATU · مارس–يونيو 2026",
-    facts: [
-      { k: "اللغات", v: "عربي + إنجليزي" },
-      { k: "العقل", v: "Local LLM عبر Ollama مع بديل سحابي" },
-      { k: "الذاكرة", v: "RAG فوق ChromaDB" },
-      { k: "البيانات", v: "SQLite ← مزامنة Supabase" },
-    ],
-    rule: "قاعدة التصميم",
-    never: "الواجهة لا تكلّم الـAI مباشرة أبدًا.",
-    layers: [
-      { title: "واجهة Desktop", items: ["Electron", "React"] },
-      { title: "Backend", items: ["Fastify", "SSE", "SQLite"] },
-      { title: "AI service", items: ["FastAPI", "Ollama", "ChromaDB"] },
-    ],
-    side: [
-      { title: "الأجهزة", items: ["MQTT"] },
-      { title: "مزامنة سحابية", items: ["Supabase"] },
-    ],
-    pipelineLabel: "مسار الصوت",
-    pipeline: ["كلام داخل", "Whisper STT", "Local LLM + RAG", "Text-to-speech", "صوت خارج"],
-    verify: "تم قياس: استرجاع RAG، والـCaching للردود، واكتشاف النشاط الصوتي (VAD).",
-    cta: "اقرأ الكود على GitHub",
+    title: "مشاريع من GitHub",
+    intro: "فهرس مباشر لمستودعاتي العامة. الأسماء والأوصاف وتفاصيل المشاريع مصدرها GitHub.",
+    repositoryCount: "{count} مستودعًا عامًا أصليًا",
+    showAll: "اعرض كل المستودعات ({count})",
+    noDescription: "لا يوجد وصف لهذا المستودع على GitHub حتى الآن.",
+    noLanguage: "اللغة غير محددة",
+    topics: "تصنيفات المستودع",
+    stars: "النجوم",
+    forks: "التفرعات",
+    updated: "آخر تحديث",
+    website: "الموقع",
+    source: "عرض على GitHub",
+    archived: "مؤرشف",
+    unknownDate: "التاريخ غير متاح",
+    unavailable: "بيانات المشاريع من GitHub غير متاحة مؤقتًا.",
   },
   wasla: {
     label: "القيادة",
@@ -665,10 +481,10 @@ export const ar: Dictionary = {
     location: "الإسكندرية، مصر",
     photoAlt: "أحمد عيد ببدلة سوداء",
     stats: [
-      { value: 25, suffix: "+", label: "مستودع عام على GitHub" },
+      { value: 0, label: "مستودعًا عامًا أصليًا على GitHub", source: "github-repositories" },
       { value: 8, label: "شهادات" },
       { value: 3, label: "فرق قُدتها" },
-      { value: 4, label: "مشاريع مميزة" },
+      { value: 0, label: "لغة مستخدمة في المستودعات العامة", source: "github-languages" },
     ],
     linksLabel: "تجدني على",
   },

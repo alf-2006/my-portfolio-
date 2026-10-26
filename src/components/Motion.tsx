@@ -147,45 +147,6 @@ export default function Motion() {
           return () => sts.forEach((t) => t.kill());
         });
 
-        // ── Projects: stacked cards recede ──
-        mm.add("(min-width: 960px)", () => {
-          const cards = gsap.utils.toArray<HTMLElement>(".projects .project");
-          const tweens = cards.slice(0, -1).map((card, i) =>
-            gsap.to(card, {
-              scale: 0.93,
-              "--dim": 0.6,
-              ease: "none",
-              scrollTrigger: {
-                trigger: cards[i + 1],
-                start: "top bottom",
-                end: () => `top ${76 + 16 + (i + 1) * 14}px`,
-                scrub: true,
-              },
-            })
-          );
-          return () => tweens.forEach((t) => t.scrollTrigger?.kill());
-        });
-
-        // ── Visual frames settle into place ──
-        gsap.utils.toArray<HTMLElement>(".project__visual > *").forEach((el) => {
-          gsap.fromTo(
-            el,
-            { rotateX: 14, y: 50, transformPerspective: 1200, transformOrigin: "50% 100%" },
-            { rotateX: 0, y: 0, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "center 60%", scrub: 0.5 } }
-          );
-        });
-
-        // ── RAFIQ voice pipeline: lights travel while in view ──
-        const pipe = gsap.utils.toArray<HTMLElement>(".pipeline__step");
-        if (pipe.length) {
-          const tl = gsap.timeline({ repeat: -1, paused: true });
-          pipe.forEach((p) => {
-            tl.call(() => p.setAttribute("data-on", "true")).to({}, { duration: 0.55 }).call(() => p.setAttribute("data-on", "false"));
-          });
-          tl.to({}, { duration: 0.6 });
-          ScrollTrigger.create({ trigger: ".pipeline", start: "top 85%", end: "bottom 15%", onToggle: (s) => (s.isActive ? tl.play() : tl.pause()) });
-        }
-
         // ── Wasla parallax ──
         gsap.to(".wasla__sun", { yPercent: 40, ease: "none", scrollTrigger: { trigger: "#wasla", start: "top bottom", end: "bottom top", scrub: true } });
         gsap.to(".wasla__ring", { yPercent: 20, rotate: 25, ease: "none", scrollTrigger: { trigger: "#wasla", start: "top bottom", end: "bottom top", scrub: true } });
