@@ -85,32 +85,34 @@ export default function Services({ s, dir }: { s: Dictionary["services"]; dir: "
       onBlurCapture={() => (paused.current = false)}
       onTouchStart={() => (paused.current = true)}
     >
-      <ul ref={track} className="svc__track" aria-label={s.title}>
-        {s.items.map((it, i) => {
-          const Icon = ICONS[it.icon];
-          return (
-            <li key={it.title} className="svc__card" data-active={i === active || undefined} aria-roledescription="slide" aria-label={`${i + 1} / ${s.items.length}`}>
-              <div className="svc__top">
-                <span className="svc__icon" aria-hidden="true">
-                  <Icon size={22} />
-                </span>
-                <span className="svc__num" aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="svc__title">{it.title}</h3>
-              <p className="svc__text">{it.text}</p>
-              <ul className="svc__tags">
-                {it.tags.map((t) => (
-                  <li key={t} className="chip" dir="ltr">
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="svc__viewport">
+        <ul ref={track} className="svc__track" aria-label={s.title}>
+          {s.items.map((it, i) => {
+            const Icon = ICONS[it.icon];
+            return (
+              <li key={it.title} className="svc__card" data-active={i === active || undefined} aria-roledescription="slide" aria-label={`${i + 1} / ${s.items.length}`}>
+                <div className="svc__top">
+                  <span className="svc__icon" aria-hidden="true">
+                    <Icon size={22} />
+                  </span>
+                  <span className="svc__num" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="svc__title">{it.title}</h3>
+                <p className="svc__text">{it.text}</p>
+                <ul className="svc__tags">
+                  {it.tags.map((t) => (
+                    <li key={t} className="chip" dir="ltr">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       <div className="svc__controls">
         <button type="button" className="icon-btn" onClick={() => go(active - 1)} aria-label={s.prev}>
           <Prev size={20} />

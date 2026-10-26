@@ -2379,6 +2379,49 @@ html.is-intro .intro__skip:hover {
     grid-template-columns: 1.15fr 1fr;
   }
 }
+.svc__viewport {
+  position: relative;
+  isolation: isolate;
+}
+.svc__viewport::before,
+.svc__viewport::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset-block: 10px 26px;
+  width: clamp(64px, 7vw, 112px);
+  background: var(--surface);
+  opacity: 0.48;
+  backdrop-filter: blur(9px) saturate(0.9);
+  -webkit-backdrop-filter: blur(9px) saturate(0.9);
+  pointer-events: none;
+}
+.svc__viewport::before {
+  inset-inline-start: calc(var(--pad-x) * -1);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+}
+.svc__viewport::after {
+  inset-inline-end: calc(var(--pad-x) * -1);
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 0%, transparent 100%);
+}
+[dir="rtl"] .svc__viewport::before {
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 0%, transparent 100%);
+}
+[dir="rtl"] .svc__viewport::after {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .svc__viewport::before,
+  .svc__viewport::after {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    opacity: 0.22;
+  }
+}
 .svc__track {
   display: grid;
   grid-auto-flow: column;
