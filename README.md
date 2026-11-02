@@ -2,7 +2,7 @@
 
 Bilingual (English / Arabic, full RTL) portfolio for **Ahmed Eid (ALF)**, an AI-focused IT student at Borg El Arab Technological University (BATU).
 
-Live: https://7lf.vercel.app
+Live: https://7lf.dev
 
 ## Stack
 

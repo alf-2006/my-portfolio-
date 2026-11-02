@@ -12,7 +12,7 @@ export const LINKS = {
   telegram: "https://t.me/Zarzor2006",
   facebook: "https://www.facebook.com/Zarzor7H",
   cv: "/cv/Ahmed_Eid_CV.pdf",
-  site: "https://7lf.vercel.app",
+  site: "https://7lf.dev",
   repos: {
     rafiq: "https://github.com/alf-2006/rafiq-system",
     batu: "https://github.com/alf-2006/batu-connect",
@@ -143,10 +143,10 @@ export const en: Dictionary = {
   locale: "en",
   dir: "ltr",
   meta: {
-    title: "Ahmed Eid (ALF) — AI-focused engineer & IT student",
+    title: "7lf.dev | Ahmed Eid (ALF) — AI Engineer & Full-Stack Developer",
     description:
-      "Ahmed Eid (ALF) builds AI products — local LLMs, RAG and voice AI — and engineers what AI writes: architecture, review, security and real tests. Team Leader at Wasla Tech, Alexandria, Egypt.",
-    ogAlt: "Ahmed Eid (ALF) — I build fast with AI, and engineer what it builds.",
+      "Official portfolio of Ahmed Eid (7lf / ALF) at 7lf.dev. AI-focused engineer building local LLMs, RAG, voice AI, and production web systems. Team Leader at Wasla Tech, Alexandria, Egypt.",
+    ogAlt: "7lf.dev — Ahmed Eid (ALF) | AI Engineer & Full-Stack Developer",
   },
   skip: "Skip to content",
   nav: [
@@ -368,7 +368,7 @@ export const en: Dictionary = {
     copy: "Copy email",
     copied: "Copied",
   },
-  footer: { line: "Ahmed Eid (ALF) · Alexandria, Egypt", built: "Designed & built with Next.js, three.js and GSAP", top: "Back to top" },
+  footer: { line: "Ahmed Eid (ALF) · 7lf.dev · Alexandria, Egypt", built: "Designed & built with Next.js, three.js and GSAP", top: "Back to top" },
   a11y: { opensNew: "(opens in a new tab)", menu: "Open menu", close: "Close menu" },
 };
 
@@ -376,10 +376,10 @@ export const ar: Dictionary = {
   locale: "ar",
   dir: "rtl",
   meta: {
-    title: "أحمد عيد (ALF) — مهندس متخصص في الذكاء الاصطناعي وطالب IT",
+    title: "7lf.dev | أحمد عيد (ALF) — مهندس ذكاء اصطناعي ومطور برمجيات",
     description:
-      "أحمد عيد (ALF) يبني منتجات ذكاء اصطناعي — Local LLMs وRAG والصوت — ويهندس ما يكتبه الـAI: معمارية، مراجعة، أمان واختبارات حقيقية. Team Leader في Wasla Tech، الإسكندرية.",
-    ogAlt: "أحمد عيد (ALF) — أبني بسرعة بالذكاء الاصطناعي، وأهندس ما يبنيه.",
+      "الموقع الرسمي لأحمد عيد (7lf / ALF) على 7lf.dev. مهندس متخصص في الذكاء الاصطناعي وتطوير البرمجيات — بناء أنظمة Local LLMs وRAG وتطبيقات الويب المتكاملة. Team Leader في Wasla Tech، الإسكندرية.",
+    ogAlt: "7lf.dev — أحمد عيد (ALF) | مهندس ذكاء اصطناعي ومطور برمجيات",
   },
   skip: "تخطَّ إلى المحتوى",
   nav: [
@@ -601,7 +601,7 @@ export const ar: Dictionary = {
     copy: "انسخ البريد",
     copied: "تم النسخ",
   },
-  footer: { line: "أحمد عيد (ALF) · الإسكندرية، مصر", built: "تصميم وتنفيذ بـNext.js وthree.js وGSAP", top: "للأعلى" },
+  footer: { line: "أحمد عيد (ALF) · 7lf.dev · الإسكندرية، مصر", built: "تصميم وتنفيذ بـNext.js وthree.js وGSAP", top: "للأعلى" },
   a11y: { opensNew: "(يفتح في تبويب جديد)", menu: "افتح القائمة", close: "أغلق القائمة" },
 };
 
