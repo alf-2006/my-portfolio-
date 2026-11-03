@@ -71,6 +71,7 @@ export default function Portfolio({ d, repositories }: { d: Dictionary; reposito
                 </span>
               </div>
               <h1 id="hero-title" className="hero__title">
+                <span className="sr-only">{d.locale === "ar" ? "7lf — أحمد عيد: " : "7lf — Ahmed Eid: "}</span>
                 <span className="line-mask">
                   <span>{d.hero.titleA}</span>
                 </span>
@@ -257,7 +258,7 @@ export default function Portfolio({ d, repositories }: { d: Dictionary; reposito
           <div className="container-x">
             <div className="work__head">
               <div className="work__identity">
-                <Image className="work__logo" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
+                <Image className="work__logo" src="/brand/alf-logo-800.webp" alt="7lf logo" width={800} height={449} />
                 <div>
                   <span className="label">{d.work.label}</span>
                   <h2 id="work-title" className="h2" data-reveal>

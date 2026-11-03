@@ -396,10 +396,26 @@ a {
   top: 4px;
 }
 .brand__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.98rem;
   font-weight: 650;
   color: var(--ink-2);
   letter-spacing: -0.01em;
+}
+.brand__tag {
+  font-weight: 750;
+  color: var(--ink);
+}
+.brand__sep {
+  color: var(--muted);
+  opacity: 0.5;
+  font-weight: 400;
+}
+.brand__sub {
+  color: var(--muted);
+  font-weight: 500;
 }
 .nav {
   display: none;
@@ -1646,11 +1662,11 @@ html.is-intro,
 html.is-intro body {
   overflow: hidden;
 }
+/* Semantic HTML is never hidden from search crawlers or accessibility tree */
 html.is-intro .site-header,
 html.is-intro main,
 html.is-intro .site-footer {
-  opacity: 0;
-  visibility: hidden;
+  /* Kept rendered and visible */
 }
 @keyframes intro-in {
   from {
@@ -1662,12 +1678,22 @@ html.intro-done main {
   animation: intro-in 0.9s var(--ease-out) both;
 }
 html.is-intro .intro {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   position: fixed;
-  inset: auto 0 0;
-  z-index: 6;
+  inset: 0;
+  z-index: 10;
+  background-color: var(--paper);
   pointer-events: none;
   padding-bottom: clamp(22px, 5vh, 48px);
+}
+html.is-intro .ribbon-canvas {
+  z-index: 15;
+}
+html.is-intro .intro__bar {
+  position: relative;
+  z-index: 20;
 }
 .intro::after {
   content: "";
@@ -1705,7 +1731,7 @@ html.is-intro .intro__skip {
   position: fixed;
   top: 18px;
   inset-inline-end: var(--pad-x);
-  z-index: 7;
+  z-index: 30;
   min-height: 44px;
   align-items: center;
   padding: 0 18px;

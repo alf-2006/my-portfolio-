@@ -143,10 +143,10 @@ export const en: Dictionary = {
   locale: "en",
   dir: "ltr",
   meta: {
-    title: "7lf.dev | Ahmed Eid (ALF) — AI Engineer & Full-Stack Developer",
+    title: "7lf — Ahmed Eid | AI Engineer & Full-Stack Developer",
     description:
-      "Official portfolio of Ahmed Eid (7lf / ALF) at 7lf.dev. AI-focused engineer building local LLMs, RAG, voice AI, and production web systems. Team Leader at Wasla Tech, Alexandria, Egypt.",
-    ogAlt: "7lf.dev — Ahmed Eid (ALF) | AI Engineer & Full-Stack Developer",
+      "Official portfolio of 7lf (Ahmed Eid / ALF) at 7lf.dev. AI-focused engineer building local LLMs, RAG, voice AI, and production web systems. Team Leader at Wasla Tech, Alexandria, Egypt.",
+    ogAlt: "7lf — Ahmed Eid | AI Engineer & Full-Stack Developer",
   },
   skip: "Skip to content",
   nav: [
@@ -160,13 +160,13 @@ export const en: Dictionary = {
   langSwitch: { label: "العربية", href: "/ar", hrefLang: "ar", aria: "اقرأ الموقع بالعربية" },
   talk: "Let’s talk",
   hero: {
-    eyebrow: "Ahmed Eid — ALF",
+    eyebrow: "7lf · Ahmed Eid (ALF)",
     pill: "Open to internships & freelance",
     titleA: "I build fast with AI\u00a0—",
     titleB: "and ",
     titleKey: "engineer",
     titleC: " what it builds.",
-    sub: "AI-focused IT student in Alexandria, Egypt. I design the architecture, direct the AI tools, then review, harden and test what they produce.",
+    sub: "7lf is the software & AI engineering portfolio of Ahmed Eid, an IT student in Alexandria, Egypt. I design the architecture, direct the AI tools, then review, harden and test what they produce.",
     ctaPrimary: "View projects",
     ctaSecondary: "Contact me",
     facts: ["IT student · BATU, 2nd year", "Team Leader · Wasla Tech", "Local LLMs · RAG · Voice AI"],
@@ -305,10 +305,10 @@ export const en: Dictionary = {
   },
   about: {
     label: "About",
-    title: "Hey, I’m Ahmed.",
+    title: "Hey, I’m Ahmed (7lf).",
     role: "AI-focused IT student · Team Leader at Wasla Tech",
     paragraphs: [
-      "I’m a second-year IT student at Borg El Arab Technological University in Alexandria. My main focus is AI — local LLMs, retrieval (RAG) and voice — and the full-stack engineering that turns them into products people can use.",
+      "I’m a second-year IT student at Borg El Arab Technological University in Alexandria, building under the alias 7lf. My main focus is AI — local LLMs, retrieval (RAG) and voice — and the full-stack engineering that turns them into products people can use.",
       "I build fast with AI tools, but I don’t ship what I can’t explain. I design the architecture first, review every line the tools write and back the result with real tests. I lead the Wasla Tech team, and I co-founded RAFIQ as its AI Team Leader.",
     ],
     location: "Alexandria, Egypt",
@@ -354,7 +354,7 @@ export const en: Dictionary = {
     greeting: "Hi Ahmed,",
   },
   theme: { dark: "Switch to dark mode", light: "Switch to light mode" },
-  intro: { skip: "Skip intro", label: "Ahmed Eid — ALF" },
+  intro: { skip: "Skip intro", label: "7lf · Ahmed Eid (ALF)" },
   contact: {
     label: "Contact",
     titleA: "Have an idea that needs AI and ",
@@ -368,7 +368,7 @@ export const en: Dictionary = {
     copy: "Copy email",
     copied: "Copied",
   },
-  footer: { line: "Ahmed Eid (ALF) · 7lf.dev · Alexandria, Egypt", built: "Designed & built with Next.js, three.js and GSAP", top: "Back to top" },
+  footer: { line: "7lf — Ahmed Eid (ALF) · 7lf.dev · Alexandria, Egypt", built: "Designed & built with Next.js, three.js and GSAP", top: "Back to top" },
   a11y: { opensNew: "(opens in a new tab)", menu: "Open menu", close: "Close menu" },
 };
 
@@ -376,10 +376,10 @@ export const ar: Dictionary = {
   locale: "ar",
   dir: "rtl",
   meta: {
-    title: "7lf.dev | أحمد عيد (ALF) — مهندس ذكاء اصطناعي ومطور برمجيات",
+    title: "7lf (أحمد عيد) — مهندس ذكاء اصطناعي ومطور برمجيات",
     description:
-      "الموقع الرسمي لأحمد عيد (7lf / ALF) على 7lf.dev. مهندس متخصص في الذكاء الاصطناعي وتطوير البرمجيات — بناء أنظمة Local LLMs وRAG وتطبيقات الويب المتكاملة. Team Leader في Wasla Tech، الإسكندرية.",
-    ogAlt: "7lf.dev — أحمد عيد (ALF) | مهندس ذكاء اصطناعي ومطور برمجيات",
+      "الموقع الرسمي لـ 7lf (أحمد عيد / ALF) على 7lf.dev. مهندس متخصص في الذكاء الاصطناعي وتطوير البرمجيات — بناء أنظمة Local LLMs وRAG وتطبيقات الويب المتكاملة. قائد فريق Wasla Tech، الإسكندرية.",
+    ogAlt: "7lf (أحمد عيد) — مهندس ذكاء اصطناعي ومطور برمجيات",
   },
   skip: "تخطَّ إلى المحتوى",
   nav: [
@@ -393,13 +393,13 @@ export const ar: Dictionary = {
   langSwitch: { label: "English", href: "/", hrefLang: "en", aria: "Read this site in English" },
   talk: "لنتحدث",
   hero: {
-    eyebrow: "أحمد عيد — ALF",
+    eyebrow: "7lf · أحمد عيد (ALF)",
     pill: "متاح للتدريب والعمل الحر",
     titleA: "أبني بسرعة بالذكاء الاصطناعي\u00a0—",
     titleB: "و",
     titleKey: "أهندس",
     titleC: " كل ما يبنيه.",
-    sub: "طالب IT في الإسكندرية، تخصصي الأساسي الذكاء الاصطناعي. أصمم الـArchitecture، أوجّه أدوات الـAI، ثم أراجع وأؤمّن وأختبر كل ما تنتجه.",
+    sub: "7lf هو بورتفوليو أحمد عيد لهندسة البرمجيات والذكاء الاصطناعي — طالب IT في الإسكندرية. أصمم المعمارية، أوجّه أدوات الـAI، ثم أراجع وأؤمّن وأختبر كل ما تنتجه.",
     ctaPrimary: "استعرض المشاريع",
     ctaSecondary: "تواصل معي",
     facts: ["طالب IT · جامعة BATU، سنة ثانية", "Team Leader · Wasla Tech", "Local LLMs · RAG · Voice AI"],
@@ -538,10 +538,10 @@ export const ar: Dictionary = {
   },
   about: {
     label: "نبذة",
-    title: "أهلًا، أنا أحمد.",
+    title: "أهلًا، أنا أحمد (7lf).",
     role: "طالب IT متخصص في الذكاء الاصطناعي · Team Leader في Wasla Tech",
     paragraphs: [
-      "طالب في السنة الثانية بقسم تكنولوجيا المعلومات في جامعة برج العرب التكنولوجية بالإسكندرية. تركيزي الأساسي هو الذكاء الاصطناعي — Local LLMs والـRAG والصوت — والهندسة الكاملة (Full-stack) التي تحوّلها إلى منتجات يستخدمها الناس.",
+      "طالب في السنة الثانية بقسم تكنولوجيا المعلومات في جامعة برج العرب التكنولوجية بالإسكندرية، وأعمل برمجياً بالاسم المستعار 7lf. تركيزي الأساسي هو الذكاء الاصطناعي — Local LLMs والـRAG والصوت — والهندسة الكاملة (Full-stack) التي تحوّلها إلى منتجات يستخدمها الناس.",
       "أبني بسرعة بأدوات الـAI، لكنني لا أنشر ما لا أستطيع شرحه. أصمم المعمارية أولًا، وأراجع كل سطر تكتبه الأدوات، وأدعم النتيجة باختبارات حقيقية. أقود فريق Wasla Tech، وشاركت في تأسيس RAFIQ كقائد لفريق الـAI.",
     ],
     location: "الإسكندرية، مصر",
@@ -587,7 +587,7 @@ export const ar: Dictionary = {
     greeting: "مرحبًا أحمد،",
   },
   theme: { dark: "التبديل إلى الوضع الليلي", light: "التبديل إلى الوضع النهاري" },
-  intro: { skip: "تخطَّ المقدمة", label: "أحمد عيد — ALF" },
+  intro: { skip: "تخطَّ المقدمة", label: "7lf · أحمد عيد (ALF)" },
   contact: {
     label: "تواصل",
     titleA: "لديك فكرة تحتاج إلى ذكاء اصطناعي و",
@@ -601,7 +601,7 @@ export const ar: Dictionary = {
     copy: "انسخ البريد",
     copied: "تم النسخ",
   },
-  footer: { line: "أحمد عيد (ALF) · 7lf.dev · الإسكندرية، مصر", built: "تصميم وتنفيذ بـNext.js وthree.js وGSAP", top: "للأعلى" },
+  footer: { line: "7lf — أحمد عيد (ALF) · 7lf.dev · الإسكندرية، مصر", built: "تصميم وتنفيذ بـNext.js وthree.js وGSAP", top: "للأعلى" },
   a11y: { opensNew: "(يفتح في تبويب جديد)", menu: "افتح القائمة", close: "أغلق القائمة" },
 };
 

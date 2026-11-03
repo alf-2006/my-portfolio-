@@ -51,19 +51,19 @@ export function buildMetadata(d: Dictionary): Metadata {
     },
     description: d.meta.description,
     keywords,
-    applicationName: "7lf.dev — Ahmed Eid (ALF)",
-    authors: [{ name: "Ahmed Eid", url: LINKS.site }],
-    creator: "Ahmed Eid (7lf)",
-    publisher: "Ahmed Eid",
+    applicationName: "7lf — Ahmed Eid",
+    authors: [{ name: "Ahmed Eid (7lf)", url: LINKS.site }],
+    creator: "7lf (Ahmed Eid)",
+    publisher: "7lf",
     category: "technology",
     alternates: {
       canonical: path,
       languages: { en: "/", ar: "/ar", "x-default": "/" },
     },
     openGraph: {
-      type: "profile",
+      type: "website",
       url: path,
-      siteName: "7lf.dev | Ahmed Eid (ALF)",
+      siteName: "7lf",
       title: d.meta.title,
       description: d.meta.description,
       locale: isAr ? "ar_EG" : "en_US",
@@ -79,9 +79,10 @@ export function buildMetadata(d: Dictionary): Metadata {
     },
     twitter: {
       card: "summary_large_image",
+      site: "@Zarzor7H",
+      creator: "@Zarzor7H",
       title: d.meta.title,
       description: d.meta.description,
-      creator: "@Zarzor7H",
       images: [isAr ? "/og-ar.png" : "/og.png"],
     },
     robots: {
@@ -113,8 +114,8 @@ export function personJsonLd(d: Dictionary) {
         "@type": "WebSite",
         "@id": `${LINKS.site}/#website`,
         url: LINKS.site,
-        name: "7lf.dev",
-        alternateName: ["7lf", "Ahmed Eid Portfolio", "بورتفوليو أحمد عيد"],
+        name: "7lf",
+        alternateName: ["7lf.dev", "Ahmed Eid", "أحمد عيد", "ALF", "Ahmed Eid Portfolio", "بورتفوليو أحمد عيد"],
         description: d.meta.description,
         inLanguage: isAr ? "ar-EG" : "en-US",
         publisher: {
@@ -187,4 +188,4 @@ export function personJsonLd(d: Dictionary) {
   };
 }
 
-export const MOTION_BOOT = `(function(){try{var d=document.documentElement;try{if(localStorage.getItem('alf-theme')==='dark'){d.dataset.theme='dark';var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content','#070b17')}}catch(e){}if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js-motion');var seen=false;try{seen=sessionStorage.getItem('alf-intro-seen')==='1'}catch(e){}if(!seen){d.classList.add('is-intro');setTimeout(function(){if(!window.__introRevealed){window.__introRevealed=true;d.classList.add('intro-done');d.classList.remove('is-intro');window.dispatchEvent(new Event('alf:intro-reveal'))}},9000)}setTimeout(function(){if(!window.__motionReady){d.classList.remove('js-motion');d.classList.remove('is-intro')}},4500)}}catch(e){}})();`;
+export const MOTION_BOOT = `(function(){try{var d=document.documentElement;try{if(localStorage.getItem('alf-theme')==='dark'){d.dataset.theme='dark';var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content','#070b17')}}catch(e){}var isBot=typeof navigator!=='undefined'&&/bot|googlebot|crawler|spider|robot|crawling|lighthouse/i.test(navigator.userAgent);if(!isBot&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js-motion');var seen=false;try{seen=sessionStorage.getItem('alf-intro-seen')==='1'}catch(e){}if(!seen){d.classList.add('is-intro');setTimeout(function(){if(!window.__introRevealed){window.__introRevealed=true;d.classList.add('intro-done');d.classList.remove('is-intro');window.dispatchEvent(new Event('alf:intro-reveal'))}},9000)}setTimeout(function(){if(!window.__motionReady){d.classList.remove('js-motion');d.classList.remove('is-intro')}},4500)}}catch(e){}})();`;

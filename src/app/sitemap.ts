@@ -2,26 +2,26 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://7lf.dev";
-  const now = new Date();
+  const lastModified = new Date("2026-11-01T00:00:00.000Z");
   const languages = {
-    en: `${base}/`,
+    en: base,
     ar: `${base}/ar`,
-    "x-default": `${base}/`,
+    "x-default": base,
   };
 
   return [
     {
-      url: `${base}/`,
-      lastModified: now,
+      url: base,
+      lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
       alternates: { languages },
     },
     {
       url: `${base}/ar`,
-      lastModified: now,
+      lastModified,
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 0.9,
       alternates: { languages },
     },
   ];
