@@ -60,7 +60,7 @@ export default function Portfolio({ d, repositories }: { d: Dictionary; reposito
           <div className="hero__glow" />
           <div className="hero__dots" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="ribbon-fallback" src="/brand/alf-logo-800.webp" alt="" width={800} height={449} />
+          <img className="ribbon-fallback" src="/brand/alf-logo-800.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width={560} height={314} />
           <div className="container-x hero__inner">
             <div className="hero__content">
               <div className="hero__top" data-hero="top">
@@ -258,7 +258,7 @@ export default function Portfolio({ d, repositories }: { d: Dictionary; reposito
           <div className="container-x">
             <div className="work__head">
               <div className="work__identity">
-                <Image className="work__logo" src="/brand/alf-logo-800.webp" alt="7lf logo" width={800} height={449} />
+                <Image className="work__logo" src="/brand/alf-logo-800.webp" alt="" aria-hidden="true" width={76} height={43} />
                 <div>
                   <span className="label">{d.work.label}</span>
                   <h2 id="work-title" className="h2" data-reveal>

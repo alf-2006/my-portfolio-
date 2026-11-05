@@ -1,0 +1,38 @@
+{
+  "name": "7lf — Ahmed Eid",
+  "short_name": "7lf",
+  "description": "7lf is the software & AI engineering portfolio of Ahmed Eid, an IT student in Alexandria, Egypt. I design the architecture, direct the AI tools, then review, refine, and ship production-ready systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b17",
+  "theme_color": "#070b17",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

@@ -2,21 +2,39 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "7lf.dev — Ahmed Eid (ALF)",
-    short_name: "7lf.dev",
-    description: "Official portfolio of Ahmed Eid (7lf / ALF) — AI & Full-Stack Engineer.",
+    name: "7lf — Ahmed Eid",
+    short_name: "7lf",
+    description:
+      "7lf is the software & AI engineering portfolio of Ahmed Eid, an IT student in Alexandria, Egypt. I design the architecture, direct the AI tools, then review, refine, and ship production-ready systems.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f6f7fb",
-    theme_color: "#f6f7fb",
+    background_color: "#070b17",
+    theme_color: "#070b17",
     icons: [
       {
-        src: "/icon.png",
-        sizes: "any",
+        src: "/favicon.ico",
+        sizes: "48x48",
+        type: "image/x-icon",
+      },
+      {
+        src: "/icon-96x96.png",
+        sizes: "96x96",
         type: "image/png",
       },
       {
-        src: "/apple-icon.png",
+        src: "/icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
+      },
+      {
+        src: "/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },

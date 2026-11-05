@@ -48,7 +48,7 @@ export default function Header({ nav, langSwitch, talk, a11y, locale, theme }: P
         <div className="container-x site-header__inner">
           <a href={home} className="brand" aria-label="7lf — Ahmed Eid">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="brand__logo" src="/brand/alf-logo-800.webp" alt="7lf logo" width={800} height={449} />
+            <img className="brand__logo" src="/brand/alf-logo-800.webp" alt="" aria-hidden="true" width={60} height={34} decoding="async" />
             <span className="brand__name">
               <strong className="brand__tag">7lf</strong>
               <span className="brand__sep" aria-hidden="true">/</span>

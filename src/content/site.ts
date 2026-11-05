@@ -145,7 +145,7 @@ export const en: Dictionary = {
   meta: {
     title: "7lf — Ahmed Eid | AI Engineer & Full-Stack Developer",
     description:
-      "Official portfolio of 7lf (Ahmed Eid / ALF) at 7lf.dev. AI-focused engineer building local LLMs, RAG, voice AI, and production web systems. Team Leader at Wasla Tech, Alexandria, Egypt.",
+      "7lf is the software & AI engineering portfolio of Ahmed Eid, an IT student in Alexandria, Egypt. I design the architecture, direct the AI tools, then review, refine, and ship production-ready systems.",
     ogAlt: "7lf — Ahmed Eid | AI Engineer & Full-Stack Developer",
   },
   skip: "Skip to content",

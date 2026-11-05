@@ -4,6 +4,7 @@ import { LINKS, type Dictionary } from "./site";
 export function buildMetadata(d: Dictionary): Metadata {
   const path = d.locale === "ar" ? "/ar" : "/";
   const isAr = d.locale === "ar";
+  const canonicalUrl = isAr ? `${LINKS.site}/ar` : LINKS.site;
 
   const keywords = isAr
     ? [
@@ -11,6 +12,7 @@ export function buildMetadata(d: Dictionary): Metadata {
         "7lf",
         "أحمد عيد",
         "Ahmed Eid",
+        "Alfanan",
         "ALF",
         "Wasla Tech",
         "وصلة تك",
@@ -28,6 +30,7 @@ export function buildMetadata(d: Dictionary): Metadata {
         "7lf.dev",
         "7lf",
         "Ahmed Eid",
+        "Alfanan",
         "أحمد عيد",
         "ALF",
         "Wasla Tech",
@@ -47,33 +50,51 @@ export function buildMetadata(d: Dictionary): Metadata {
     metadataBase: new URL(LINKS.site),
     title: {
       default: d.meta.title,
-      template: "%s | 7lf.dev",
+      template: "%s | 7lf — Ahmed Eid",
     },
     description: d.meta.description,
     keywords,
     applicationName: "7lf — Ahmed Eid",
     authors: [{ name: "Ahmed Eid (7lf)", url: LINKS.site }],
-    creator: "7lf (Ahmed Eid)",
-    publisher: "7lf",
+    creator: "7lf — Ahmed Eid",
+    publisher: "7lf — Ahmed Eid",
     category: "technology",
+    manifest: "/site.webmanifest",
     alternates: {
-      canonical: path,
-      languages: { en: "/", ar: "/ar", "x-default": "/" },
+      canonical: canonicalUrl,
+      languages: {
+        en: LINKS.site,
+        ar: `${LINKS.site}/ar`,
+        "x-default": LINKS.site,
+      },
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+        { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+        { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon.png", sizes: "192x192", type: "image/png" },
+      ],
+      shortcut: [{ url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" }],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     openGraph: {
       type: "website",
-      url: path,
-      siteName: "7lf",
+      url: canonicalUrl,
+      siteName: "7lf — Ahmed Eid",
       title: d.meta.title,
       description: d.meta.description,
       locale: isAr ? "ar_EG" : "en_US",
       alternateLocale: isAr ? ["en_US"] : ["ar_EG"],
       images: [
         {
-          url: isAr ? "/og-ar.png" : "/og.png",
+          url: "/og-image.png",
           width: 1200,
           height: 630,
           alt: d.meta.ogAlt,
+          type: "image/png",
         },
       ],
     },
@@ -83,15 +104,26 @@ export function buildMetadata(d: Dictionary): Metadata {
       creator: "@Zarzor7H",
       title: d.meta.title,
       description: d.meta.description,
-      images: [isAr ? "/og-ar.png" : "/og.png"],
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: d.meta.ogAlt,
+        },
+      ],
     },
     robots: {
       index: true,
       follow: true,
       nocache: false,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
       googleBot: {
         index: true,
         follow: true,
+        noimageindex: false,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -105,7 +137,7 @@ export function buildMetadata(d: Dictionary): Metadata {
 
 export function personJsonLd(d: Dictionary) {
   const isAr = d.locale === "ar";
-  const currentUrl = `${LINKS.site}${isAr ? "/ar" : ""}`;
+  const currentUrl = isAr ? `${LINKS.site}/ar` : `${LINKS.site}/`;
 
   return {
     "@context": "https://schema.org",
@@ -113,9 +145,9 @@ export function personJsonLd(d: Dictionary) {
       {
         "@type": "WebSite",
         "@id": `${LINKS.site}/#website`,
-        url: LINKS.site,
-        name: "7lf",
-        alternateName: ["7lf.dev", "Ahmed Eid", "أحمد عيد", "ALF", "Ahmed Eid Portfolio", "بورتفوليو أحمد عيد"],
+        name: "7lf — Ahmed Eid",
+        alternateName: ["7lf", "Ahmed Eid", "Alfanan"],
+        url: `${LINKS.site}/`,
         description: d.meta.description,
         inLanguage: isAr ? "ar-EG" : "en-US",
         publisher: {
@@ -128,61 +160,62 @@ export function personJsonLd(d: Dictionary) {
         url: currentUrl,
         name: d.meta.title,
         isPartOf: { "@id": `${LINKS.site}/#website` },
-        about: { "@id": `${LINKS.site}/#person` },
         description: d.meta.description,
         inLanguage: isAr ? "ar-EG" : "en-US",
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: `${LINKS.site}${isAr ? "/og-ar.png" : "/og.png"}`,
+          url: `${LINKS.site}/og-image.png`,
+          width: 1200,
+          height: 630,
         },
-      },
-      {
-        "@type": "Person",
-        "@id": `${LINKS.site}/#person`,
-        name: isAr ? "أحمد عيد" : "Ahmed Eid",
-        alternateName: ["7lf", "7lf.dev", "ALF", isAr ? "Ahmed Eid" : "أحمد عيد"],
-        url: LINKS.site,
-        image: `${LINKS.site}/brand/alf-logo-800.webp`,
-        email: `mailto:${LINKS.email}`,
-        jobTitle: isAr ? "مهندس ذكاء اصطناعي ومطور برمجيات" : "AI & Full-Stack Engineer",
-        gender: "https://schema.org/Male",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Alexandria",
-          addressCountry: "EG",
+        mainEntity: {
+          "@type": "Person",
+          "@id": `${LINKS.site}/#person`,
+          name: "Ahmed Eid",
+          alternateName: "7lf",
+          jobTitle: "AI Engineer & Full-Stack Developer",
+          url: `${LINKS.site}/`,
+          image: `${LINKS.site}/og-image.png`,
+          email: `mailto:${LINKS.email}`,
+          gender: "https://schema.org/Male",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Alexandria",
+            addressCountry: "EG",
+          },
+          affiliation: {
+            "@type": "CollegeOrUniversity",
+            name: "Borg El Arab Technological University (BATU)",
+            url: "https://batechu.com/",
+          },
+          worksFor: {
+            "@type": "Organization",
+            name: "Wasla Tech",
+            url: LINKS.youtube,
+          },
+          sameAs: [
+            LINKS.github,
+            LINKS.linkedin,
+            LINKS.youtube,
+            LINKS.facebook,
+            LINKS.telegram,
+          ],
+          knowsAbout: [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Local LLMs",
+            "Retrieval-Augmented Generation (RAG)",
+            "Voice AI",
+            "Full-Stack Web Development",
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Python",
+            "FastAPI",
+            "Ollama",
+            "IoT",
+          ],
         },
-        affiliation: {
-          "@type": "CollegeOrUniversity",
-          name: "Borg El Arab Technological University (BATU)",
-          url: "https://batechu.com/",
-        },
-        worksFor: {
-          "@type": "Organization",
-          name: "Wasla Tech",
-          url: LINKS.youtube,
-        },
-        sameAs: [
-          LINKS.github,
-          LINKS.linkedin,
-          LINKS.youtube,
-          LINKS.facebook,
-          LINKS.telegram,
-        ],
-        knowsAbout: [
-          "Artificial Intelligence",
-          "Machine Learning",
-          "Local LLMs",
-          "Retrieval-Augmented Generation (RAG)",
-          "Voice AI",
-          "Full-Stack Web Development",
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Python",
-          "FastAPI",
-          "Ollama",
-          "IoT",
-        ],
       },
     ],
   };
